@@ -48,7 +48,7 @@ namespace CSharpConsole
                 if (ConnRes != 0)
                 {
                     ConnRes = tryConnect();
-                    Console.WriteLine("Connecting...");
+                    Console.WriteLine("Failed...");
                 }
                 else
                 {
@@ -56,12 +56,18 @@ namespace CSharpConsole
                     if (jc.Left.Status != 0 && jc.Right.Status != 0)
                     {
                         ConnRes = -1;
-                        Console.WriteLine("Status was L - " + jc.Left.Status + " R - " + jc.Right.Status);
+                        Console.WriteLine("Connection reset. Status was L - " + jc.Left.Status + " R - " + jc.Right.Status);
                     }
                     else
                     {
-                        Console.WriteLine("A: " + jc.Left.A + " B: " +jc.Left.B + " X: " + jc.Left.X + " Y: " + jc.Left.Y);
-                        Console.WriteLine("A: " + jc.Right.A + " B: " +jc.Right.B + " X: " + jc.Right.X + " Y: " + jc.Right.Y);
+                        Console.WriteLine("Devices - " + getJoyconsAmount() + " Status was L - " + jc.Left.Status + " R - " + jc.Right.Status);
+                        if (getJoyconsAmount() < 2)
+                        {
+                            ConnRes = -1;
+                            Console.WriteLine("Retrying for 2");
+                        }
+                        //Console.WriteLine("A: " + jc.Left.A + " B: " +jc.Left.B + " X: " + jc.Left.X + " Y: " + jc.Left.Y);
+                        //Console.WriteLine("A: " + jc.Right.A + " B: " +jc.Right.B + " X: " + jc.Right.X + " Y: " + jc.Right.Y);
                     }
                 }
             }
