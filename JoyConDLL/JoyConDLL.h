@@ -11,6 +11,7 @@ typedef struct JOYCONSTATE {
     int     B;
     int     Y;
     int     X;
+    int     Minus;
     int     Plus;
     int     SL;
     int     SR;

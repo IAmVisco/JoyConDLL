@@ -19,6 +19,7 @@ namespace CSharpConsole
             public int B;
             public int Y;
             public int X;
+            public int Minus;
             public int Plus;
             public int SL;
             public int SR;
